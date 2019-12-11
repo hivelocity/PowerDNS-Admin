@@ -35,6 +35,7 @@ legal_envvars = (
     'SAML_WANT_MESSAGE_SIGNED',
     'SAML_LOGOUT',
     'SAML_LOGOUT_URL',
+    'POWERDNS_PASS',
 )
 
 legal_envvars_int = (
