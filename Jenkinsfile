@@ -8,7 +8,7 @@ def stageGatherCredentialsAndConfiguration() {
         withCredentials([
             string(credentialsId: 'POWERDNS_PASS', variable: 'POWERDNS_PASS'),
         ]) {
-            sh "echo 'SQLA_DB_PASSWORD = \"${POWERDNS_PASS}\"' >> powerdnsadmin/docker_config.py"
+            sh "echo 'SQLA_DB_PASSWORD = \"${POWERDNS_PASS}\"' >> /app/powerdnsadmin/docker_config.py"
         }
     }
 }
