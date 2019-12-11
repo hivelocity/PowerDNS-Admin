@@ -20,7 +20,7 @@ node {
             "--build-arg PROJECT_ID=${PROJECT_ID} " +
             "."
         def customImage = hv.stageBuildContainer(master_args, other_args)
-        hv.stageDeployToMarathon(customImage, testUrl)
+        hv.stageDeployToMarathon(customImage, "")
     } catch (err) {
         hv.catchTopLevelError(err)
     } finally {
