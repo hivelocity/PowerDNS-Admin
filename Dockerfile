@@ -24,7 +24,9 @@ COPY . /app
 COPY ./docker/entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
+ARG POWERDNS_PASS
 ENV FLASK_APP=powerdnsadmin/__init__.py
+ENV POWERDNS_PASS $POWERDNS_PASS
 RUN yarn install --pure-lockfile --production \
     && yarn cache clean \
     && flask assets build
