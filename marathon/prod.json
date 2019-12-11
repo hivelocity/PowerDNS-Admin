@@ -1,0 +1,31 @@
+{
+  "cmd": null,
+  "cpus": 1,
+  "mem": 2048,
+  "disk": 1000,
+  "instances": 1,
+  "ports": [
+    0
+  ],
+  "container": {
+    "type": "DOCKER",
+    "volumes": [],
+    "docker": {
+      "network": "BRIDGE",
+      "portMappings": [
+        {
+          "containerPort": 80,
+          "protocol": "tcp",
+          "labels": {}
+        }
+      ],
+      "privileged": false,
+      "parameters": [],
+      "forcePullImage": true
+    }
+  },
+  "uris": [
+    "file:///etc/docker.tar.gz"
+  ]
+}
+
