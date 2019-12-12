@@ -27,7 +27,7 @@ node {
             "--build-arg PROJECT_ID=${PROJECT_ID} " +
             "."
         def customImage = hv.stageBuildContainer(master_args, other_args)
-        hv.stageDeployToMarathon(customImage, "", [[name: 'POWERDNS_PASS', value: "\$database_password"]] )
+        hv.stageDeployToMarathon(customImage, "", [[name: 'POWERDNS_PASS', value: database_password]] )
     } catch (err) {
         hv.catchTopLevelError(err)
     } finally {
