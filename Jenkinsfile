@@ -10,7 +10,7 @@ def stageGatherCredentialsAndConfiguration() {
         withCredentials([
             string(credentialsId: 'POWERDNS_PASS', variable: 'POWERDNS_PASS'),
         ]) {
-            database_password = POWERDNS_PASS
+            database_password = "$POWERDNS_PASS"
         }
     }
 }
