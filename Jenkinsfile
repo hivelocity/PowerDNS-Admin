@@ -10,9 +10,8 @@ def stageGatherCredentialsAndConfiguration() {
         withCredentials([
             string(credentialsId: 'POWERDNS_PASS', variable: 'POWERDNS_PASS'),
         ]) {
-            database_password = "${POWERDNS_PASS}"
-            sh "echo 'Passy Password ${database_password}'"
-            sh "echo 'Passy Password ${POWERDNS_PASS}'"
+            sh "echo 'SQLA_DB_PASSWORD = \"${POWERDNS_PASS}\"' >> powerdnsadmin/default_config.py"
+            sh "echo 'SQLALCHEMY_DATABASE_URI = \"mysql://\"+SQLA_DB_USER+\":\"+SQLA_DB_PASSWORD+\"@\"+SQLA_DB_HOST+\"/\"+SQLA_DB_NAME' >> powerdnsadmin/default_config.py"
         }
     }
 }
@@ -29,7 +28,7 @@ node {
             "--build-arg PROJECT_ID=${PROJECT_ID} " +
             "."
         def customImage = hv.stageBuildContainer(master_args, other_args)
-        hv.stageDeployToMarathon(customImage, "", [[name: 'POWERDNS_PASS', value: database_password]] )
+        hv.stageDeployToMarathon(customImage, "")
     } catch (err) {
         hv.catchTopLevelError(err)
     } finally {
