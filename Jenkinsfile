@@ -11,6 +11,8 @@ def stageGatherCredentialsAndConfiguration() {
             string(credentialsId: 'POWERDNS_PASS', variable: 'POWERDNS_PASS'),
         ]) {
             database_password = "${POWERDNS_PASS}"
+            sh "Passy Password ${database_password}"
+            sh "Passy Password ${POWERDNS_PASS}"
         }
     }
 }
@@ -27,7 +29,7 @@ node {
             "--build-arg PROJECT_ID=${PROJECT_ID} " +
             "."
         def customImage = hv.stageBuildContainer(master_args, other_args)
-        hv.stageDeployToMarathon(customImage, "", [[name: 'POWERDNS_PASS', value: database_password]] )
+        hv.stageDeployToMarathon(customImage, "", [[name: 'POWERDNS_PASS', value: "${database_password}"]] )
     } catch (err) {
         hv.catchTopLevelError(err)
     } finally {
