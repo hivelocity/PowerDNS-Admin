@@ -11,8 +11,8 @@ def stageGatherCredentialsAndConfiguration() {
             string(credentialsId: 'POWERDNS_PASS', variable: 'POWERDNS_PASS'),
         ]) {
             database_password = "${POWERDNS_PASS}"
-            sh "Passy Password ${database_password}"
-            sh "Passy Password ${POWERDNS_PASS}"
+            sh "echo 'Passy Password ${database_password}'"
+            sh "echo 'Passy Password ${POWERDNS_PASS}'"
         }
     }
 }
