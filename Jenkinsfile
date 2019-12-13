@@ -10,6 +10,7 @@ def stageGatherCredentialsAndConfiguration() {
         withCredentials([
             string(credentialsId: 'POWERDNS_PASS', variable: 'POWERDNS_PASS'),
         ]) {
+            sh "echo 'SQLA_DB_PASSWORD = \"${POWERDNS_PASS}\"' >> powerdnsadmin/default_config.py"
             sh "echo 'SQLALCHEMY_DATABASE_URI = \"mysql://\"+SQLA_DB_USER+\":${POWERDNS_PASS}@\"+SQLA_DB_HOST+\"/\"+SQLA_DB_NAME' >> powerdnsadmin/default_config.py"
         }
     }
