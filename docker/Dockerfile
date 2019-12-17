@@ -23,7 +23,7 @@ RUN apk add --no-cache ${BUILD_DEPENDENCIES} && \
 WORKDIR /build
 
 # We copy just the requirements.txt first to leverage Docker cache
-COPY ../requirements.txt /build/requirements.txt
+COPY ./requirements.txt /build/requirements.txt
 
 # Get application dependencies
 RUN pip install -r requirements.txt
