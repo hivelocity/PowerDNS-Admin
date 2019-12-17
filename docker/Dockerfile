@@ -20,16 +20,16 @@ ENV LC_ALL=en_US.UTF-8 \
 RUN apk add --no-cache ${BUILD_DEPENDENCIES} && \
     ln -s /usr/bin/pip3 /usr/bin/pip
 
-#WORKDIR /build
+WORKDIR /build
 
 # We copy just the requirements.txt first to leverage Docker cache
-COPY ./requirements.txt /build/requirements.txt
-
-# Get application dependencies
-RUN pip install -r requirements.txt
+#COPY ./requirements.txt /build/requirements.txt
 
 # Add sources
 COPY . /build
+
+# Get application dependencies
+RUN pip install -r requirements.txt
 
 # Prepare assets
 RUN yarn install --pure-lockfile --production && \
