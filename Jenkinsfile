@@ -23,10 +23,10 @@ node {
         stageGatherCredentialsAndConfiguration()
         master_args = "--no-cache " +
             "--build-arg PROJECT_ID=${PROJECT_ID} " +
-            "docker"
+            ". -f docker/Dockerfile"
         other_args = "--pull " +
             "--build-arg PROJECT_ID=${PROJECT_ID} " +
-            "docker"
+            ". -f docker/Dockerfile"
         def customImage = hv.stageBuildContainer(master_args, other_args)
         hv.stageDeployToMarathon(customImage, "")
     } catch (err) {
