@@ -66,7 +66,7 @@ def create_app(config=None):
 
     # Load app's components
     assets.init_app(app)
-    #models.init_app(app)
+    models.init_app(app)
     routes.init_app(app)
     services.init_app(app)
 
