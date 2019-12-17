@@ -20,4 +20,4 @@ from .record_entry import RecordEntry
 
 def init_app(app):
     db.init_app(app)
-    #_migrate = Migrate(app, db)  # lgtm [py/unused-local-variable]
+    _migrate = Migrate(app, db)  # lgtm [py/unused-local-variable]
